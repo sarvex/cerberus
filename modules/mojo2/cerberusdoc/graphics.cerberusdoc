@@ -810,6 +810,41 @@ If @material is null, the current default material is used.
 See also: [[SetDefaultMaterial]]
 
 
+# Method DrawTriangleFan:Void(vertices:Float[], material:Material=Null, matX:Float=0.0, matY:Float=0.0, matScaleX:Float=1.0, matScaleY:Float=1.0)
+
+Draw a simple polygon, called triangle fan consisting of multiple triangles that all share one point.
+
+@vertices contains the coordinates of all triangle points and have to be provided in the form of x0, y0, x1, y1, x2, y2,... where x0, y0 are the coordinates of the shared point.
+
+If @material is null or not provided, the current default material is used.
+
+@matX and @matY specify the relative position of the texture provided with the material. The handle of the texture is the upper left corner.
+
+@matScaleX and @matScaleY are the horizontal and vertical scaling factors of the texture.
+
+See also: [[SetDefaultMaterial]] 
+
+
+# Method DrawImageTriangleFan:Void(vertices:Float[], img:Image, imgX:Float=0.0, imgY:Float=0.0, imgScaleX:Float=1.0, imgScaleY:Float=1.0)
+
+Draw a simple polygon, called triangle fan consisting of multiple triangles that all share one point.
+
+@vertices contains the coordinates of all triangle points and have to be provided in the form of x0, y0, x1, y1, x2, y2,... where x0, y0 are the coordinates of the shared point.
+
+@imgX and @imgY specify the relative position of the image. The handle of the image is the upper left corner.
+
+@imgScaleX and @imgScaleY are the horizontal and vertical scaling factors of the image.
+
+See also: [[SetDefaultMaterial]]
+
+ 
+# Method DrawImageTriangleFan:Void(x:Float, y:Float, vertices:Float[], img:Image, imgX:Float=0.0, imgY:Float=0.0, imgScaleX:Float=1.0, imgScaleY:Float=1.0)
+
+Draw a triangle fan at the position set by @x and @y covered by an image .
+
+See also: [[SetDefaultMaterial]] 
+
+
 # Method DrawPrimitives:Void( order:Int,count:Int,vertices:Float[],material:Material=Null )
 
 Draw a batch of primtives.
