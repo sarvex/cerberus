@@ -8,6 +8,12 @@
 Import mojox.app
 #Else
 
+#If OMIT_DEFAULT_CANVAS=False And COLOR_USE_NORMALISED_COMPONENTS=True
+	Import mojo2.defaultcanvas
+	#DEFAULTCANVAS_IMPORTED=True
+	#Print "defaultcanvas imported in mojo.app!"
+#Endif
+
 Private
 
 Import graphicsdevice
@@ -93,6 +99,10 @@ Class GameDelegate Extends BBGameDelegate
 
 		EnumDisplayModes
 		
+#If DEFAULTCANVAS_IMPORTED
+		CreateDefaultCanvas()
+#EndIf		
+
 		_app.OnCreate()
 	End
 
@@ -117,7 +127,17 @@ Class GameDelegate Extends BBGameDelegate
 		ValidateDeviceWindow True
 		Local mode:=_graphics.BeginRender()
 		If mode graphics.BeginRender
-		If mode=2 _app.OnLoading Else _app.OnRender
+
+		If mode=2 
+			_app.OnLoading 
+		Else 
+			_app.OnRender
+#If DEFAULTCANVAS_IMPORTED
+			ResetDefaultCanvas()
+			FlushDefaultCanvas()
+#EndIf	
+		EndIf
+
 		If mode graphics.EndRender
 		_graphics.EndRender
 	End
